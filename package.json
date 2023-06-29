@@ -1,0 +1,58 @@
+{
+  "name": "@shutterstock/aws-embedded-metrics-flatten",
+  "version": "1.0.0",
+  "description": "Helpers for aws-embedded-metrics",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "aws",
+    "cloudwatch",
+    "optional",
+    "flatten"
+  ],
+  "scripts": {
+    "build": "tsc --build tsconfig.json && echo 'examples/\n*.tsbuildinfo' > dist/.npmignore",
+    "build:docs": "typedoc src/index.ts",
+    "example:metrics-flatten": "AWS_EMF_ENVIRONMENT=${AWS_EMF_ENVIRONMENT:-Local} FLATTEN_METRICS=${FLATTEN_METRICS:-true} ts-node -r tsconfig-paths/register examples/metrics-flatten.ts",
+    "example:metrics-optional": "AWS_EMF_ENVIRONMENT=${AWS_EMF_ENVIRONMENT:-Local} EMIT_METRICS=${EMIT_METRICS:-true} ts-node -r tsconfig-paths/register examples/metrics-optional.ts",
+    "test": "AWS_EMF_ENVIRONMENT=Local jest",
+    "lint": "eslint ./ --ext .ts --ext .tsx",
+    "lint-and-fix": "eslint ./ --ext .ts --ext .tsx --fix"
+  },
+  "files": [
+    "dist/",
+    "LICENSE.md",
+    "package.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shutterstock/aws-embedded-metrics-flatten.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "aws-embedded-metrics": "^2.0.4"
+  },
+  "peerDependencies": {
+    "aws-embedded-metrics": "^2.0.4"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "8.10.119",
+    "@types/jest": "29.5.2",
+    "@typescript-eslint/eslint-plugin": "5.59.11",
+    "@typescript-eslint/parser": "5.59.11",
+    "aws-sdk-client-mock": "2.1.1",
+    "eslint": "8.42.0",
+    "eslint-config-prettier": "8.8.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "jest": "29.5.0",
+    "prettier": "2.8.8",
+    "ts-jest": "29.1.0",
+    "ts-node": "10.9.1",
+    "tsconfig-paths": "4.2.0",
+    "typedoc": "0.24.8",
+    "typescript": "5.1.3"
+  }
+}
